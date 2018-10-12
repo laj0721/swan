@@ -1,0 +1,217 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+html {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+caption, th, td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+
+q, blockquote {
+  quotes: none;
+}
+q:before, q:after, blockquote:before, blockquote:after {
+  content: "";
+  content: none;
+}
+
+a img {
+  border: none;
+}
+
+article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
+  display: block;
+}
+
+body {
+  background-color: #f9f9f9;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 1.6rem;
+  line-height: 1.6rem;
+  background-color: #D03E27;
+  text-align: center;
+  color: #fff;
+  font-size: 0.48rem;
+  z-index: 999;
+}
+
+table {
+  width: 100%;
+  background-color: #fff;
+}
+table td, table th {
+  text-align: center;
+  border-right: 0.01333rem solid #B1B1B1;
+}
+table td:nth-child(1), table th:nth-child(1) {
+  width: 2.62667rem;
+}
+table td:nth-child(2), table th:nth-child(2) {
+  width: 2.05333rem;
+}
+table td:nth-child(3), table th:nth-child(3) {
+  width: 2.66667rem;
+}
+table td:last-child, table th:last-child {
+  border-right: 0;
+  width: 2.58667rem;
+}
+table th {
+  color: #fff;
+  height: 1.6rem;
+  line-height: 0.46667rem;
+  font-size: 0.37333rem;
+  background-color: #D03E27;
+}
+table td {
+  color: #666;
+  height: 1.17333rem;
+  font-size: 0.34667rem;
+}
+table tr:nth-child(odd) {
+  background-color: #F8F8F8;
+}
+table tr:first-child {
+  background-color: #FFF5F3;
+}
+table .withdraw {
+  display: inline-block;
+  width: 0.97333rem;
+  height: 0.49333rem;
+  line-height: 0.49333rem;
+  color: #fff;
+  font-size: 0.29333rem;
+  background-color: #D03E27;
+  -moz-border-radius: 0.24rem;
+  -webkit-border-radius: 0.24rem;
+  border-radius: 0.24rem;
+}
+
+main {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 16.48rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 1.30667rem;
+  background-color: #fff;
+}
+footer li {
+  float: left;
+  width: 33%;
+  height: 0.8rem;
+  line-height: 0.8rem;
+  text-align: center;
+  font-size: 0.37333rem;
+  background-color: #fff;
+  margin-top: 0.25333rem;
+  border-right: 0.01333rem solid #ddd;
+}
+footer li a {
+  color: #999;
+}
+footer li:last-child {
+  border-right: 0;
+}
+footer li i {
+  display: inline-block;
+  width: 0.58667rem;
+  height: 0.58667rem;
+  margin-right: 0.06667rem;
+  vertical-align: text-bottom;
+}
+footer li.home i {
+  background-image: url("../images/home.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+@media (-webkit-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2) {
+  footer li.home i {
+    background-image: url("../images/home@2x.png");
+  }
+}
+@media (-webkit-min-device-pixel-ratio: 3), (min-device-pixel-ratio: 3) {
+  footer li.home i {
+    background-image: url("../images/home@3x.png");
+  }
+}
+footer li.earnings i {
+  background-image: url("../images/earnings.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+@media (-webkit-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2) {
+  footer li.earnings i {
+    background-image: url("../images/earnings@2x.png");
+  }
+}
+@media (-webkit-min-device-pixel-ratio: 3), (min-device-pixel-ratio: 3) {
+  footer li.earnings i {
+    background-image: url("../images/earnings@3x.png");
+  }
+}
+footer li.personCenter i {
+  background-image: url("../images/personCenter.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+@media (-webkit-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2) {
+  footer li.personCenter i {
+    background-image: url("../images/personCenter@2x.png");
+  }
+}
+@media (-webkit-min-device-pixel-ratio: 3), (min-device-pixel-ratio: 3) {
+  footer li.personCenter i {
+    background-image: url("../images/personCenter@3x.png");
+  }
+}
+footer li.select a {
+  color: #D03E27;
+}
+
+/*# sourceMappingURL=index.css.map */

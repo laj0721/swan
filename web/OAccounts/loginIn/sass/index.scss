@@ -1,0 +1,123 @@
+@import "compass/css3"; //导入css3兼容的方法
+@import "compass/css3/flexbox";
+@import "compass/typography";
+@import "../../../common/sass/commonFunc";
+
+body {
+  background: url("../../images/bottom.png") no-repeat center bottom;
+  @include background-size(100% auto);
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: pxToRem(88px);
+  line-height: pxToRem(88px);
+  background-color: #fff;
+  text-align: center;
+  color: #141414;
+  font-size: pxToRem(36px);
+  z-index: 999;
+
+  i {
+    position: absolute;
+    left: pxToRem(20px);
+    top: pxToRem(22px);
+    width: pxToRem(44px);
+    height: pxToRem(44px);
+    @include backgroundImg('../../images/back');
+  }
+}
+
+main {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+  margin-top: pxToRem(300px);
+
+  .telephone,.verify-code {
+    width: pxToRem(600px);
+    height: pxToRem(90px);
+    background-color: #F5F5F5;
+    margin: pxToRem(25px) auto;
+  }
+
+  input {
+    height: pxToRem(60px);
+    margin: pxToRem(15px) 0;
+    float: left;
+    padding-left: pxToRem(20px);
+    border-left: 1px solid #D03E27;
+  }
+
+  input[placeholder], [placeholder], *[placeholder] {
+    color:#B1B1B1 !important;
+    font-size: pxToRem(28px);
+  }
+
+  .telephone {
+    i {
+      @include backgroundImg("../../images/user");
+    }
+    input {
+      width: pxToRem(480px);
+    }
+  }
+
+  .verify-code {
+    i {
+      @include backgroundImg("../../images/password");
+    }
+    input {
+      width: pxToRem(325px);
+      border-right: 1px solid #999;
+    }
+    a {
+      color: #D03E27;
+      font-size: pxToRem(24px);
+      line-height: pxToRem(90px);
+      display: inline-block;
+    }
+  }
+
+  label {
+    width: pxToRem(88px);
+    height: pxToRem(60px);
+    margin-top: pxToRem(23px);
+    float: left;
+
+    i {
+      display: inline-block;
+      width: pxToRem(44px);
+      height: pxToRem(44px);
+    }
+  }
+
+  .handle-btn {
+    margin-top: pxToRem(100px);
+
+    button {
+      width: pxToRem(500px);
+      height: pxToRem(90px);
+      background-color: #D03E27;
+      outline: 0;
+      border: 0;
+      color: #fff;
+      font-size: pxToRem(36px);
+      margin: pxToRem(20px) auto;
+      @include border-radius(pxToRem(45px));
+    }
+    a {
+      display: block;
+      width: pxToRem(120px);
+      color: #B1B1B1;
+      font-size: pxToRem(32px);
+      margin-left: pxToRem(475px);
+    }
+  }
+}

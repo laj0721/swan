@@ -1,0 +1,174 @@
+@import "compass/css3"; //导入css3兼容的方法
+@import "compass/css3/flexbox";
+@import "compass/typography";
+@import "../../../common/sass/commonFunc";
+
+body {
+  background-color:#F8F8F8;
+}
+
+main {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: pxToRem(1236px);
+  overflow-x: hidden;
+  overflow-y: auto;
+
+  header {
+    position: relative;
+    width: 100%;
+    height: pxToRem(321px);
+    color: #fff;
+    background-color: #D03E27;
+    margin-bottom: pxToRem(108px);
+
+    img {
+      width: pxToRem(120px);
+      height: pxToRem(120px);
+      margin: pxToRem(65px) pxToRem(30px);
+      vertical-align: middle;
+      @include border-radius(50%);
+    }
+
+    .user-info {
+      position: relative;
+      top: pxToRem(25px);
+      line-height: pxToRem(50px);
+      display: inline-block;
+    }
+
+    h4 {
+      font-size: pxToRem(34px);
+    }
+
+    p {
+      color: #FFDCD7;
+      font-size: pxToRem(30px);
+    }
+  }
+
+  .money-list {
+    position: absolute;
+    left: pxToRem(20px);
+    top: pxToRem(240px);
+    width: pxToRem(710px);
+    height: pxToRem(160px);
+    background-color: #fff;
+    @include border-radius(pxToRem(8px));
+    
+    dl {
+      width: 100%;
+      height: pxToRem(90px);
+      margin: pxToRem(35px) 0;
+    }
+
+    dd {
+      float: left;
+      height: pxToRem(90px);
+      line-height: pxToRem(45px);
+      width: 33%;
+      text-align: center;
+      border-right: pxToRem(1px) solid #D03E27;
+
+      &:last-child {
+        border-right: 0;
+      }
+    }
+
+    h5 {
+      color: #141414;
+      font-size: pxToRem(24px);
+    }
+
+    p {
+      color: #D03E27;
+      font-size: pxToRem(28px);
+    }
+  }
+
+  ul {
+    width: 100%;
+    height: pxToRem(355px);
+    background-color: #fff;
+    margin: 20px auto;
+
+    li {
+      position: relative;
+      width: pxToRem(658px);
+      height: pxToRem(88px);
+      line-height: pxToRem(88px);
+      margin: 0 auto;
+      font-size: pxToRem(28px);
+      border-bottom: 1px solid #DFDFDF;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: pxToRem(28px);
+        right: 0;
+        width: pxToRem(20px);
+        height: pxToRem(32px);
+        @include backgroundImg('../../images/back');
+        @include transform(rotate(180deg));
+      }
+
+      a {
+        color: #343434;
+      }
+    }
+  }
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: pxToRem(98px);
+  background-color: #fff;
+
+  li {
+    float: left;
+    width: 33%;
+    height: pxToRem(60px);
+    line-height: pxToRem(60px);
+    text-align: center;
+    font-size: pxToRem(28px);
+    background-color: #fff;
+    margin-top: pxToRem(19px);
+    border-right: pxToRem(1px) solid #ddd;
+
+    a {
+      color: #999;
+    }
+
+    &:last-child {
+      border-right: 0;
+    };
+
+    i {
+      display: inline-block;
+      width: pxToRem(44px);
+      height: pxToRem(44px);
+      margin-right: pxToRem(5px);
+      vertical-align: text-bottom;
+    }
+
+    &.home i {
+      @include backgroundImg('../images/home');
+    }
+
+    &.earnings i {
+      @include backgroundImg('../images/earnings');
+    }
+
+    &.personCenter i {
+      @include backgroundImg('../images/personCenter');
+    }
+
+    &.select a {
+      color: #D03E27;
+    }
+  }
+}

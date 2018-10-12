@@ -1,0 +1,144 @@
+@import "compass/css3"; //导入css3兼容的方法
+@import "compass/css3/flexbox";
+@import "compass/typography";
+@import "../../../common/sass/commonFunc";
+
+body {
+  background-color:#f9f9f9;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: pxToRem(88px);
+  line-height: pxToRem(88px);
+  background-color: #D03E27;
+  text-align: center;
+  color: #fff;
+  font-size: pxToRem(36px);
+  z-index: 999;
+
+  i {
+    position: absolute;
+    left: pxToRem(20px);
+    top: pxToRem(22px);
+    width: pxToRem(44px);
+    height: pxToRem(44px);
+    @include backgroundImg('../../images/back1');
+  }
+}
+
+main {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  max-height: pxToRem(1148px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin-top: pxToRem(88px);
+  background-color: #fff;
+
+  table {
+    width: pxToRem(710px);
+    margin: 0 auto;
+  
+    td {
+      color: #141414;
+      height: pxToRem(88px);
+      font-size: pxToRem(22px);
+      text-align: left;
+      border-bottom: pxToRem(1px) solid #B1B1B1;
+  
+      &:nth-child(1) {
+        width: pxToRem(350px);
+      }
+  
+      &:nth-child(2) {
+        width: pxToRem(180px);
+      }
+  
+      &:nth-child(3) {
+        width: pxToRem(180px);
+      }
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
+    }
+  }
+}
+
+.backTop {
+  position: fixed;
+  width: pxToRem(78px);
+  height: pxToRem(78px);
+  right: pxToRem(35px);
+  bottom: pxToRem(140px);
+  border: pxToRem(1px) solid #B1B1B1;
+  opacity: 0;
+  transition: opacity 0.3s;
+  background-color: #fff;
+  @include border-radius(50%);
+  @include backgroundImg('../../images/backTop');
+  background-position: center;
+  @include background-size(pxToRem(44px) pxToRem(44px));
+
+  &.faseIn {
+    opacity: 1;
+  }
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: pxToRem(98px);
+  background-color: #fff;
+
+  li {
+    float: left;
+    width: 33%;
+    height: pxToRem(60px);
+    line-height: pxToRem(60px);
+    text-align: center;
+    font-size: pxToRem(28px);
+    background-color: #fff;
+    margin-top: pxToRem(19px);
+    border-right: pxToRem(1px) solid #ddd;
+
+    a {
+      color: #999;
+    }
+
+    &:last-child {
+      border-right: 0;
+    };
+
+    i {
+      display: inline-block;
+      width: pxToRem(44px);
+      height: pxToRem(44px);
+      margin-right: pxToRem(5px);
+      vertical-align: text-bottom;
+    }
+
+    &.home i {
+      @include backgroundImg('../images/home');
+    }
+
+    &.earnings i {
+      @include backgroundImg('../images/earnings');
+    }
+
+    &.personCenter i {
+      @include backgroundImg('../images/personCenter');
+    }
+
+    &.select a {
+      color: #D03E27;
+    }
+  }
+}

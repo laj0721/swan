@@ -1,0 +1,171 @@
+@import "compass/css3"; //导入css3兼容的方法
+@import "compass/css3/flexbox";
+@import "compass/typography";
+@import "../../../common/sass/commonFunc";
+
+body {
+  background-color:#f9f9f9;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: pxToRem(88px);
+  line-height: pxToRem(88px);
+  background-color: #D03E27;
+  text-align: center;
+  color: #fff;
+  font-size: pxToRem(36px);
+  z-index: 999;
+
+  i {
+    position: absolute;
+    left: pxToRem(20px);
+    top: pxToRem(22px);
+    width: pxToRem(44px);
+    height: pxToRem(44px);
+    display: none;
+    @include backgroundImg('../images/back');
+  }
+}
+
+main {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: pxToRem(1146px);
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin-top: pxToRem(88px);
+
+  section {
+    max-height: pxToRem(806px);
+    margin: pxToRem(20px);
+    overflow-x: hidden;
+    overflow-y: auto;
+    border: pxToRem(1px) solid #B1B1B1;
+
+    table {
+      width: 100%;
+      background-color: #fff;
+
+      td,th {
+        text-align: center;
+        border-right: pxToRem(1px) solid #B1B1B1;
+
+        &:last-child{
+          border-right: 0;
+        }
+      }
+
+      th {
+        color: #D03E27;
+        height: pxToRem(120px);
+        line-height: pxToRem(30px);
+        font-size: pxToRem(28px);
+        background-color: #FFF5F3;
+      }
+
+      td {
+        color: #666;
+        height: pxToRem(70px);
+        font-size: pxToRem(24px);
+      }
+
+      tr:nth-child(even) {
+        background-color:#f9f9f9;
+      }
+    }
+  }
+
+  .btn-group {
+    position: absolute;
+    left: pxToRem(50px);
+    bottom: pxToRem(150px);
+    width: pxToRem(650px);
+    height: pxToRem(70px);
+    margin: pxToRem(40px) auto;
+
+    button {
+      width: pxToRem(260px);
+      height: pxToRem(70px);
+      color: #fff;
+      font-size: pxToRem(28px);
+      border: 0;
+      outline: 0;
+      background-color: #D03E27;
+      @include border-radius(pxToRem(8px));
+    }
+
+  }
+}
+
+.month,.city {
+  header i {
+    display: block;
+  }
+
+  main {
+    section {
+      max-height: pxToRem(1033px);
+    }
+    .btn-group {
+      display: none;
+    }
+  }
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: pxToRem(98px);
+  background-color: #fff;
+
+  li {
+    float: left;
+    width: 33%;
+    height: pxToRem(60px);
+    line-height: pxToRem(60px);
+    text-align: center;
+    font-size: pxToRem(28px);
+    background-color: #fff;
+    margin-top: pxToRem(19px);
+    border-right: pxToRem(1px) solid #ddd;
+
+    a {
+      color: #999;
+    }
+
+    &:last-child {
+      border-right: 0;
+    };
+
+    i {
+      display: inline-block;
+      width: pxToRem(44px);
+      height: pxToRem(44px);
+      margin-right: pxToRem(5px);
+      vertical-align: text-bottom;
+    }
+
+    &.home i {
+      @include backgroundImg('../images/home');
+    }
+
+    &.earnings i {
+      @include backgroundImg('../images/earnings');
+    }
+
+    &.personCenter i {
+      @include backgroundImg('../images/personCenter');
+    }
+
+    &.select {
+      color: #D03E27;
+    }
+  }
+}

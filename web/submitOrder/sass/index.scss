@@ -1,0 +1,217 @@
+@import "compass/css3"; //导入css3兼容的方法
+@import "compass/css3/flexbox";
+@import "compass/typography";
+@import "../../common/sass/commonFunc";
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: pxToRem(88px);
+  line-height: pxToRem(88px);
+  background-color: #fff;
+  text-align: center;
+  color: #141414;
+  font-size: pxToRem(36px);
+  border-bottom: 6px solid #DFDFDF;
+  z-index: 999;
+
+  i {
+    position: absolute;
+    left: pxToRem(20px);
+    top: pxToRem(22px);
+    width: pxToRem(44px);
+    height: pxToRem(44px);
+    @include backgroundImg('../images/back');
+  }
+}
+
+main {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin-top: pxToRem(94px);
+  max-height: pxToRem(1240px);
+  background-color: #F8F8F8;
+
+  .text-r {
+    text-align: right;
+  }
+
+  .goods-info {
+    padding: pxToRem(25px) pxToRem(20px) 0 pxToRem(20px);
+    background-color: #fff;
+
+    i {
+      display: inline-block;
+      width: pxToRem(44px);
+      height: pxToRem(44px);
+      margin-right: pxToRem(10px);
+      vertical-align: pxToRem(-12px);
+    }
+    .shop-icon {
+      @include backgroundImg('../images/store');
+    }
+    .arrows {
+      width: pxToRem(23px);
+      vertical-align: pxToRem(-13px);
+      @include backgroundImg('../images/back');
+      @include transform(rotate(180deg));
+    }
+    .store-name {
+      color: #141414;
+      font-size: pxToRem(26px);
+      padding-bottom: pxToRem(30px);
+    }
+    .store-detail {
+      border-bottom: pxToRem(1px) solid #DFDFDF;
+
+      img {
+        width: pxToRem(180px);
+        height: pxToRem(180px);
+        float: left;
+      }
+      .order-infor {
+        margin-left: pxToRem(210px);
+      }
+      h4 {
+        color: #141414;
+        font-size: pxToRem(24px);
+        line-height: pxToRem(32px);
+      }
+      p {
+        color: #999;
+        font-size: pxToRem(22px);
+      }
+      .red-price {
+        color: #D03E27;
+        font-size: pxToRem(30px);
+        margin-right: pxToRem(25px);
+      }
+      .weight {
+        line-height: pxToRem(58px);
+      }
+      .goods-price {
+        padding-top: pxToRem(28px);
+      }
+      .goods-sum {
+        padding-bottom: pxToRem(15px);
+      }
+    }
+  }
+  
+  .distri-method {
+    color: #666;
+    font-size: pxToRem(24px);
+    margin-bottom: pxToRem(10px);
+    background-color: #fff;
+    line-height: pxToRem(36px);
+    padding: pxToRem(15px) pxToRem(20px);
+
+    .text-r {
+      color: #141414;
+      font-size: pxToRem(22px);
+    }
+  }
+
+  .goods-money {
+    margin-bottom: pxToRem(10px);
+    background-color: #fff;
+    padding: pxToRem(15px) pxToRem(20px);
+    line-height: pxToRem(45px);
+
+    label {
+      color: #666;
+      font-size: pxToRem(24px);
+    }
+
+    span {
+      color: #141414;
+      font-size: pxToRem(28px);
+    }
+
+    .freight span, .sales-return span {
+      color: #D03E27;
+    } 
+  }
+
+  .address {
+    background-color: #fff;
+    padding: pxToRem(20px);
+
+    label {
+      display: inline-block;
+      color: #343434;
+      font-size: pxToRem(30px);
+      width: pxToRem(160px);
+      height: pxToRem(65px);
+    }
+
+    input {
+      height: pxToRem(75px);
+      width: pxToRem(400px);
+      border-bottom: pxToRem(1px) solid #d8d8d8;
+    }
+
+    input[placeholder], [placeholder], *[placeholder] {
+      color:#B1B1B1 !important;
+      font-size: pxToRem(26px);
+    }
+
+    .verify-area {
+      margin-left: pxToRem(168px);
+    }
+
+    .verify-code {
+      width: pxToRem(180px);
+    }
+
+    .code-btn {
+      height: pxToRem(50px);
+      line-height: pxToRem(46px);
+      width: pxToRem(168px);
+      color: #fff;
+      font-size: pxToRem(24px);
+      background-color: #D03E27;
+      @include border-radius(pxToRem(8px));
+    }
+    .receive {
+      margin-top: pxToRem(25px);
+    }
+
+    .goods-address {
+      margin-left: pxToRem(168px);
+      button {
+        width: pxToRem(120px);
+        height: pxToRem(50px);
+        color: #B1B1B1;
+        font-size: pxToRem(26px);
+        border: pxToRem(1px) solid #ddd;
+        background-color: #fff;
+        margin-right: pxToRem(12px);
+      }
+    }
+  }
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: pxToRem(98px);
+
+  button {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    border: 0;
+    line-height: pxToRem(98px);
+    background-color: #D03E27;
+    color: #fff;
+    font-size: pxToRem(28px);
+  }
+}

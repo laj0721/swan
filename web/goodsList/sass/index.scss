@@ -1,0 +1,109 @@
+@import "compass/css3"; //导入css3兼容的方法
+@import "compass/css3/flexbox";
+@import "compass/typography";
+@import "../../common/sass/commonFunc";
+
+body {
+  background-color: #F8F8F8;
+}
+
+main {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  max-height: pxToRem(1206px);
+  padding: pxToRem(20px) pxToRem(15px);
+
+  ul li {
+    width: pxToRem(350px);
+    height: pxToRem(578px);
+    margin: 0 pxToRem(5px) pxToRem(10px) pxToRem(5px);
+    background-color: #fff;
+    float: left;
+    @include border-radius(pxToRem(4px));
+  
+    img {
+      width: pxToRem(350px);
+      height: pxToRem(350px);
+      @include border-radius(pxToRem(4px) pxToRem(4px) 0 0);
+    }
+
+    .content {
+      padding: pxToRem(10px);
+    }
+
+    h4 {
+      height: pxToRem(72px);
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 2;
+      overflow: hidden;
+      color: #141414;
+      font-size: pxToRem(26px);
+      line-height: pxToRem(36px);
+    }
+
+    p,span {
+      color: #999;
+      font-size: pxToRem(22px);
+      line-height: pxToRem(30px);
+      padding-top: pxToRem(5px);
+    }
+    
+    .clear {
+      margin-top: pxToRem(20px);
+    }
+
+    em {
+      color: #D03E27;
+      font-size: pxToRem(38px);
+      font-weight: bold;
+    }
+  }
+
+  .loading {
+    text-align: center;
+    height: pxToRem(50px);
+  }
+}
+
+.backTop {
+  position: fixed;
+  width: pxToRem(78px);
+  height: pxToRem(78px);
+  right: pxToRem(35px);
+  bottom: pxToRem(140px);
+  border: pxToRem(1px) solid #B1B1B1;
+  opacity: 0;
+  background-color: #fff;
+  transition: opacity 0.5s;
+  @include border-radius(50%);
+  @include backgroundImg('../images/backTop');
+  background-position: center;
+  @include background-size(pxToRem(44px) pxToRem(44px));
+
+  &.faseIn {
+    opacity: 1;
+  }
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: pxToRem(88px);
+
+  button {
+    width: 100%;
+    height: 100%;
+    outline: none;
+    border: 0;
+    color: #fff;
+    text-align: center;
+    font-size: pxToRem(30px);
+    background-color: #D03E27;
+  }
+}

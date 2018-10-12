@@ -1,0 +1,144 @@
+@import "compass/css3"; //导入css3兼容的方法
+@import "compass/css3/flexbox";
+@import "compass/typography";
+@import "../../../common/sass/commonFunc";
+
+body {
+  background-color:#f9f9f9;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: pxToRem(120px);
+  line-height: pxToRem(120px);
+  background-color: #D03E27;
+  text-align: center;
+  color: #fff;
+  font-size: pxToRem(36px);
+  z-index: 999;
+}
+
+table {
+  width: 100%;
+  background-color: #fff;
+
+  td,th {
+    text-align: center;
+    border-right: pxToRem(1px) solid #B1B1B1;
+
+    &:nth-child(1) {
+      width: pxToRem(197px);
+    }
+
+    &:nth-child(2) {
+      width: pxToRem(154px);
+    }
+
+    &:nth-child(3) {
+      width: pxToRem(200px);
+    }
+
+    &:last-child{
+      border-right: 0;
+      width: pxToRem(194px);
+    }
+  }
+
+  th {
+    color: #fff;
+    height: pxToRem(120px);
+    line-height: pxToRem(35px);
+    font-size: pxToRem(28px);
+    background-color: #D03E27;
+  }
+
+  td {
+    color: #666;
+    height: pxToRem(88px);
+    font-size: pxToRem(26px);
+  }
+
+  tr:nth-child(odd) {
+    background-color:#F8F8F8;
+  }
+
+  tr:first-child {
+    background-color:#FFF5F3;
+  }
+
+  .withdraw {
+    display: inline-block;
+    width: pxToRem(73px);
+    height: pxToRem(37px);
+    line-height: pxToRem(37px);
+    color: #fff;
+    font-size: pxToRem(22px);
+    background-color: #D03E27;
+    @include border-radius(pxToRem(18px));
+  }
+}
+
+main {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: pxToRem(1236px);
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: pxToRem(98px);
+  background-color: #fff;
+
+  li {
+    float: left;
+    width: 33%;
+    height: pxToRem(60px);
+    line-height: pxToRem(60px);
+    text-align: center;
+    font-size: pxToRem(28px);
+    background-color: #fff;
+    margin-top: pxToRem(19px);
+    border-right: pxToRem(1px) solid #ddd;
+
+    a {
+      color: #999;
+    }
+
+    &:last-child {
+      border-right: 0;
+    };
+
+    i {
+      display: inline-block;
+      width: pxToRem(44px);
+      height: pxToRem(44px);
+      margin-right: pxToRem(5px);
+      vertical-align: text-bottom;
+    }
+
+    &.home i {
+      @include backgroundImg('../images/home');
+    }
+
+    &.earnings i {
+      @include backgroundImg('../images/earnings');
+    }
+
+    &.personCenter i {
+      @include backgroundImg('../images/personCenter');
+    }
+
+    &.select a {
+      color: #D03E27;
+    }
+  }
+}

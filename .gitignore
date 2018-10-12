@@ -1,0 +1,7 @@
+.settings/
+.idea/
+.DS_Store
+node_modules/
+build/
+.sass-cache/
+package-lock.json
