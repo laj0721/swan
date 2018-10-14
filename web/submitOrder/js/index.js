@@ -63,15 +63,14 @@ $(function() {
 
   $('.selectVal').on('click', function(e) {
     e.stopPropagation();
-    var $selDiv = $(this).siblings('.selectDiv'),
-      $outlineBorder = $(this).parent('.outlineBorder');
+    var $selDiv = $(this).siblings('.selectDiv');
+      
+    $(this).parent().siblings().find('.selectDiv').addClass('none');
     
-    $selectDiv.addClass('none');
-    $selDiv.toggleClass('none');
     if (!$selDiv.hasClass('none')) {
-      $outlineBorder.addClass('open');
+      $selDiv.addClass('none');
     } else {
-      $outlineBorder.removeClass('open');
+      $selDiv.removeClass('none');
     }
   });
 

@@ -30,6 +30,14 @@ $(function() {
     });
   });
 
+  // 推荐人
+  $('.referrer input').on('change', function() {
+    var selVal = $(this).val(),
+      $referInfo = $('.referInfo');
+    
+    selVal === 'yes'? $referInfo.show() : $referInfo.hide();
+  });
+
   //返回
   $('header i').on('click', function() {
     history.go(-1);

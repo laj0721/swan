@@ -47,7 +47,7 @@ $(function() {
   
   // 加载列表
   function loadData(pageNum) {
-    if (!id) {
+    if (!(id && $.isNumeric(id))) {
       return;
     }
 

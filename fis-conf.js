@@ -8,11 +8,7 @@ fis.match(/\/web\/(.*)/i, {
 
 fis.match('::package', {
   postpackager: [
-    fis.plugin('simplify'),
-    // fis.plugin('inCSSToWebP', {
-    //     quality: 60,
-    //     imgReg: ['jpg', 'png', 'jpeg'],
-    // }),
+    fis.plugin('simplify')
   ],
 });
 

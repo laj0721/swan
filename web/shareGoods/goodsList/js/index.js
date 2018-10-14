@@ -51,7 +51,7 @@ $(function() {
       page: pageNum || 1,
       per_page: 6
     };
-
+    isloading = true;
     $.ajax({
       type: 'GET',
       url: '/api/products',
@@ -69,7 +69,7 @@ $(function() {
 
   // 滚动加载 
   $main.off('scroll').on('scroll', function(e) {
-    if(isloading || total <= $ul.find('li').length) {
+    if(isloading) {
       return;
     }
 
@@ -85,9 +85,10 @@ $(function() {
     }
 
     if (ulHeight - OFFSET <= ulTop + docHeight) {
-      isloading = true;
       console.log('滑到最底部了');
-      loadData(++page);
+      if (total > $ul.find('li').length) {
+        loadData(++page);
+      }
     }
   });
   
