@@ -97,7 +97,7 @@ main {
   overflow-x: hidden;
   overflow-y: auto;
   margin-top: 1.25333rem;
-  max-height: 16.53333rem;
+  max-height: 15.2rem;
   background-color: #F8F8F8;
 }
 main .text-r {
@@ -235,7 +235,6 @@ main .address input {
   border-bottom: 0.01333rem solid #d8d8d8;
 }
 main .address input[placeholder], main .address [placeholder], main .address *[placeholder] {
-  color: #B1B1B1 !important;
   font-size: 0.34667rem;
 }
 main .address .verify-area {
@@ -249,14 +248,64 @@ main .address .code-btn {
   line-height: 0.61333rem;
   width: 2.24rem;
   color: #fff;
+  border: 0;
+  outline: 0;
   font-size: 0.32rem;
   background-color: #D03E27;
   -moz-border-radius: 0.10667rem;
   -webkit-border-radius: 0.10667rem;
   border-radius: 0.10667rem;
 }
+main .address .code-btn.disabled {
+  background-color: #666;
+}
 main .address .receive {
   margin-top: 0.33333rem;
+}
+main .address .receive .outlineBorder {
+  position: relative;
+  width: 3.26667rem;
+  color: #666;
+  line-height: 0.8rem;
+  text-align: left;
+  float: left;
+  background-color: #fff;
+  border: 0.01333rem solid #ddd;
+  margin: 0 0.16rem 0.13333rem 0;
+  padding-left: 0.13333rem;
+}
+main .address .receive .outlineBorder .right {
+  position: absolute;
+  width: 0;
+  height: 0;
+  right: 0.66667rem;
+  top: 0px;
+  border-top: 0.22667rem solid transparent;
+  border-right: 0.22667rem solid transparent;
+  border-bottom: 0.22667rem solid #B1B1B1;
+  border-left: 0.22667rem solid transparent;
+}
+main .address .receive .outlineBorder .selectDiv {
+  position: absolute;
+  bottom: 0.8rem;
+  left: -0.01333rem;
+  width: 3.13333rem;
+  max-height: 2.50667rem;
+  background-color: #fff;
+  overflow-x: hidden;
+  overflow-y: auto;
+  padding: 0.13333rem;
+  border: 0.01333rem solid #ddd;
+  z-index: 999;
+}
+main .address .receive .outlineBorder .selectDiv li {
+  color: #141414;
+  font-size: 0.37333rem;
+  line-height: 0.6rem;
+}
+main .address .receive .outlineBorder.open .right {
+  top: 0.29333rem;
+  transform: rotate(180deg);
 }
 main .address .goods-address {
   margin-left: 2.24rem;

@@ -107,6 +107,9 @@ main {
       &.dianzan i {
         @include backgroundImg('../images/dian');
       }
+      &.download i {
+        @include backgroundImg('../images/down');
+      }
     }
   }
   .price-bar {
@@ -530,6 +533,7 @@ footer {
     transform: translateY(0%);
   }
 }
+
 @include keyframes(fadeOut) {
   0% {
     transform: translateY(0%);

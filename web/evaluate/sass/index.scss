@@ -95,3 +95,23 @@ ul li {
     }
   }
 }
+
+.backTop {
+  position: fixed;
+  width: pxToRem(78px);
+  height: pxToRem(78px);
+  right: pxToRem(35px);
+  bottom: pxToRem(140px);
+  border: pxToRem(1px) solid #B1B1B1;
+  opacity: 0;
+  background-color: #fff;
+  transition: opacity 0.5s;
+  @include border-radius(50%);
+  @include backgroundImg('../images/backTop');
+  background-position: center;
+  @include background-size(pxToRem(44px) pxToRem(44px));
+
+  &.faseIn {
+    opacity: 1;
+  }
+}

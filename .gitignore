@@ -3,5 +3,6 @@
 .DS_Store
 node_modules/
 build/
+static/
 .sass-cache/
 package-lock.json

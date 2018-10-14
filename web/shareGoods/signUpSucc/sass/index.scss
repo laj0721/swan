@@ -1,0 +1,63 @@
+@import "compass/css3"; //导入css3兼容的方法
+@import "compass/css3/flexbox";
+@import "compass/typography";
+@import "../../common/sass/commonFunc";
+
+body {
+  background-color: #F8F8F8;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: pxToRem(88px);
+  line-height: pxToRem(88px);
+  background-color: #fff;
+  text-align: center;
+  color: #141414;
+  font-size: pxToRem(36px);
+  border-bottom: 6px solid #DFDFDF;
+  z-index: 999;
+
+  i {
+    position: absolute;
+    left: pxToRem(20px);
+    top: pxToRem(22px);
+    width: pxToRem(44px);
+    height: pxToRem(44px);
+    @include backgroundImg('../images/back');
+  }
+}
+
+main {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align: center;
+  margin-top: pxToRem(94px);
+  max-height: pxToRem(1240px);
+
+  div {
+    font-size: pxToRem(30px);
+    color: #141414;
+    margin: pxToRem(120px) 0 pxToRem(110px);
+    line-height: pxToRem(46px);
+
+    a {
+      color: #D03E27;
+    }
+  }
+
+  img {
+    width: pxToRem(273px);
+    height: pxToRem(273px);
+    padding: 15px;
+    border: 1px solid #D03E27;
+    @include border-radius(pxToRem(8px));
+  }
+}

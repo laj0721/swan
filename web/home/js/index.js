@@ -1,8 +1,101 @@
 $(function() {
+  "use strict";
+
   FastClick.attach(document.body);
 
   var $chooseDialog = $('.choose-dialog'),
-    $chooseDigContent = $chooseDialog.find('.content');
+    $chooseDigContent = $chooseDialog.find('.content'),
+    search = parse();
+
+  if (search) {
+    if (search.type === 'share') {
+      $('.dian-zan,.dianzan').remove();
+    }
+     
+    if (search.id) {
+      getGoodsById();
+    }
+  }
+  
+  var ua = window.navigator.userAgent.toLowerCase();
+  if(ua.match(/MicroMessenger/i) == 'micromessenger' || ua.match(/_SQ_/i) == '_sq_'){ // 判断是否微信页面
+    // 调用后端接口，获取【appId，timestamp，nonceStr，signature】
+
+    $('.goods-detail .share').on('click', function() {
+      // 分享给朋友
+      wx.updateAppMessageShareData({ 
+        title: '', // 分享标题
+        desc: '', // 分享描述
+        link: location.href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+        imgUrl: '', // 分享图标
+      }, function(res) { 
+        // 这里是回调函数 
+      }); 
+
+      // 分享到朋友圈
+      wx.updateTimelineShareData({ 
+        title: '', // 分享标题
+        link: location.href, // 分享链接，该链接域名或路径必须与当前页面对应的公众号JS安全域名一致
+        imgUrl: '', // 分享图标
+      }, function(res) { 
+        // 这里是回调函数 
+      }); 
+    });
+  }
+
+  function getGoodsById() {
+    var param = {
+      include: 'skus,properties'
+    };
+
+    $.ajax({
+      type: 'GET',
+      url: '/api/products/' + search.id || 0,
+      data: param,
+      dataType: 'json',
+      timeout: 3000,
+      success: function(data){
+        handleData(data);
+      },
+      complete: function(){
+        //event();
+      }
+    });
+  }
+
+  function handleData(result) {
+    console.log(result);
+    // if (result && $.isArray(result.data) && result.data.length > 0) {
+    //   var html = [],
+    //     data = result.data,
+    //     len = data.length;
+
+    //   for(var i = 0; i < len; i++) {
+    //     var item = data[i];
+    //     var li = ['<li data-id="' + item.id + '">',
+    //       '<img src=' + item.image_url + ' />',
+    //       '<div class="content">',
+    //         '<h4>' + item.long_title + '</h4>',
+    //         '<p>淘宝价 <span>￥2399.00</span></p>',
+    //         '<p>会员价 <span>￥2399.00</span></p>',
+    //         '<div class="clear">',
+    //           '<em class="float-l">' + item.price + '</em>',
+    //           '<span class="float-r">销量' + item.sold_count + '</span>',
+    //         '</div>',
+    //       '</div>',
+    //     '</li>'];
+    //     html.push(li.join(''));
+    //   }
+
+    //   $ul.append(html.join(''));
+    // }
+
+    // if (result && $.isPlainObject(result.meta) && $.isPlainObject(result.meta.pagination)) {
+    //   total = result.meta.pagination.total;
+    // }
+
+    // isloading = false;
+  }
 
   // banner轮播图
   var mySwiper = new Swiper ('.swiper-container', {
@@ -11,12 +104,13 @@ $(function() {
       el: '.swiper-pagination',
       type: 'fraction'
     }
-  }); 
+  });
 
   // 查看商品参数
   $('.goods-param,.choose-sizes').on('click', function() {
     $chooseDialog.removeClass('none');
   });
+
   $chooseDialog.find('button,.close').on('click', function() {
     $chooseDigContent.addClass('fadeout');
     setTimeout(function() {
@@ -26,8 +120,8 @@ $(function() {
   });
   
   // 查看全部评论
-  $('.more-btn button').on('click', function() {
-    location.href = "../evaluate/index.html";
+  $('.more-btn button,.user-evaluate li').on('click', function() {
+    location.href = "../evaluate/index.html?id=" + search.id;
   });
 
   // 购买

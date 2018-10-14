@@ -150,4 +150,40 @@ ul li .detail span {
   margin-right: 0.16rem;
 }
 
+.backTop {
+  position: fixed;
+  width: 1.04rem;
+  height: 1.04rem;
+  right: 0.46667rem;
+  bottom: 1.86667rem;
+  border: 0.01333rem solid #B1B1B1;
+  opacity: 0;
+  background-color: #fff;
+  transition: opacity 0.5s;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  background-image: url("../images/backTop.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  -moz-background-size: 0.58667rem 0.58667rem;
+  -o-background-size: 0.58667rem 0.58667rem;
+  -webkit-background-size: 0.58667rem 0.58667rem;
+  background-size: 0.58667rem 0.58667rem;
+}
+@media (-webkit-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2) {
+  .backTop {
+    background-image: url("../images/backTop@2x.png");
+  }
+}
+@media (-webkit-min-device-pixel-ratio: 3), (min-device-pixel-ratio: 3) {
+  .backTop {
+    background-image: url("../images/backTop@3x.png");
+  }
+}
+.backTop.faseIn {
+  opacity: 1;
+}
+
 /*# sourceMappingURL=index.css.map */

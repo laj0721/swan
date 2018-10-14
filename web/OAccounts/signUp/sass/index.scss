@@ -1,0 +1,185 @@
+@import "compass/css3"; //导入css3兼容的方法
+@import "compass/css3/flexbox";
+@import "compass/typography";
+@import "../../../common/sass/commonFunc";
+
+body {
+  background: url("/staticPub/images/_f375090.png") no-repeat center bottom;
+  @include background-size(100% auto);
+}
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: pxToRem(88px);
+  line-height: pxToRem(88px);
+  background-color: #fff;
+  text-align: center;
+  color: #141414;
+  font-size: pxToRem(36px);
+  z-index: 999;
+
+  i {
+    position: absolute;
+    left: pxToRem(20px);
+    top: pxToRem(22px);
+    width: pxToRem(44px);
+    height: pxToRem(44px);
+    @include backgroundImg('../../images/back');
+  }
+}
+
+main {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  overflow: hidden;
+  text-align: center;
+  margin-top: pxToRem(88px);
+
+  .clear {
+    width: pxToRem(710px);
+    height: pxToRem(90px);
+    background-color: #F5F5F5;
+    margin: pxToRem(25px) auto;
+
+    input,select,.outlineBorder {
+      width: pxToRem(595px);
+      height: pxToRem(60px);
+      margin: pxToRem(15px) 0;
+      float: left;
+      padding-left: pxToRem(20px);
+      border-left: 1px solid #D03E27;
+    }
+  
+    input[placeholder], [placeholder], *[placeholder],.outlineBorder {
+      font-size: pxToRem(28px);
+    }
+  
+    label {
+      width: pxToRem(88px);
+      height: pxToRem(60px);
+      margin-top: pxToRem(23px);
+      float: left;
+  
+      i {
+        display: inline-block;
+        width: pxToRem(44px);
+        height: pxToRem(44px);
+      }
+    }
+
+    .outlineBorder {
+      position: relative;
+      color: #666;
+      line-height: pxToRem(60px);
+      text-align: left;
+
+      .right {
+        position: absolute;
+        width: 0;
+        height: 0;
+        right: pxToRem(50px);
+        top: 0px;
+        border-top: pxToRem(17px) solid transparent;
+        border-right: pxToRem(17px) solid transparent;
+        border-bottom: pxToRem(17px) solid #B1B1B1;
+        border-left: pxToRem(17px) solid transparent;
+      }
+
+      .selectDiv {
+        position: absolute;
+        top: pxToRem(75px);
+        left: 0;
+        width: 94%;
+        max-height: pxToRem(285px);
+        background-color: #fff;
+        overflow-x: hidden;
+        overflow-y: auto;
+        padding: pxToRem(20px);
+        border: pxToRem(1px) solid #ddd;
+        border-top: 0;
+
+        li {
+          color: #141414;
+          font-size: pxToRem(28px);
+          height: pxToRem(70px);
+          margin-bottom: pxToRem(5px);
+        }
+      }
+
+      &.open .right {
+        top: pxToRem(22px);
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  .company {
+    i {
+      @include backgroundImg("../../images/user");
+    }
+  }
+  
+  .city {
+    i {
+      @include backgroundImg("../../images/city");
+    }
+  }
+
+  .telephone {
+    i {
+      @include backgroundImg("../../images/phone");
+    }
+  }
+
+  .verify-code {
+    i {
+      @include backgroundImg("../../images/password");
+    }
+    input {
+      width: pxToRem(420px);
+      border-right: 1px solid #999;
+    }
+    a {
+      color: #D03E27;
+      font-size: pxToRem(24px);
+      line-height: pxToRem(90px);
+      display: inline-block;
+    }
+  }
+
+  .referrer {
+    height: pxToRem(90px);
+    line-height: pxToRem(90px);
+    margin: pxToRem(25px) pxToRem(30px);
+    color: #141414;
+    font-size: pxToRem(30px);
+    text-align: left;
+
+    input {
+      width: pxToRem(24px);
+      height: pxToRem(24px);
+      margin-left: pxToRem(40px);
+    }
+  }
+
+  .handle-btn {
+    margin: pxToRem(100px) 0;
+
+    button {
+      width: pxToRem(500px);
+      height: pxToRem(90px);
+      background-color: #D03E27;
+      outline: 0;
+      border: 0;
+      color: #fff;
+      font-size: pxToRem(36px);
+      margin: pxToRem(20px) auto;
+      @include border-radius(pxToRem(45px));
+    }
+  }
+}

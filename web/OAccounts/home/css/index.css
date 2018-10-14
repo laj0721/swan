@@ -243,7 +243,7 @@ footer li.personCenter i {
     background-image: url("../images/personCenter@3x.png");
   }
 }
-footer li.select {
+footer li.select a {
   color: #D03E27;
 }
 

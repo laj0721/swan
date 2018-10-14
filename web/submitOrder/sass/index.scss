@@ -35,7 +35,7 @@ main {
   overflow-x: hidden;
   overflow-y: auto;
   margin-top: pxToRem(94px);
-  max-height: pxToRem(1240px);
+  max-height: pxToRem(1140px);
   background-color: #F8F8F8;
 
   .text-r {
@@ -158,7 +158,6 @@ main {
     }
 
     input[placeholder], [placeholder], *[placeholder] {
-      color:#B1B1B1 !important;
       font-size: pxToRem(26px);
     }
 
@@ -175,16 +174,75 @@ main {
       line-height: pxToRem(46px);
       width: pxToRem(168px);
       color: #fff;
+      border: 0;
+      outline: 0;
       font-size: pxToRem(24px);
       background-color: #D03E27;
       @include border-radius(pxToRem(8px));
+
+      &.disabled {
+        background-color: #666;
+      }
     }
+
     .receive {
       margin-top: pxToRem(25px);
+      //height: pxToRem(320px);
+
+      .outlineBorder {
+        position: relative;
+        width: pxToRem(245px);
+        color: #666;
+        line-height: pxToRem(60px);
+        text-align: left;
+        float: left;
+        background-color: #fff;
+        border: pxToRem(1px) solid #ddd;
+        margin: 0 pxToRem(12px) pxToRem(10px) 0;
+        padding-left: pxToRem(10px);
+  
+        .right {
+          position: absolute;
+          width: 0;
+          height: 0;
+          right: pxToRem(50px);
+          top: 0px;
+          border-top: pxToRem(17px) solid transparent;
+          border-right: pxToRem(17px) solid transparent;
+          border-bottom: pxToRem(17px) solid #B1B1B1;
+          border-left: pxToRem(17px) solid transparent;
+        }
+  
+        .selectDiv {
+          position: absolute;
+          bottom: pxToRem(60px);
+          left: pxToRem(-1px);
+          width: pxToRem(235px);
+          max-height: pxToRem(188px);
+          background-color: #fff;
+          overflow-x: hidden;
+          overflow-y: auto;
+          padding: pxToRem(10px);
+          border: pxToRem(1px) solid #ddd;
+          z-index: 999;
+  
+          li {
+            color: #141414;
+            font-size: pxToRem(28px);
+            line-height: pxToRem(45px);
+          }
+        }
+  
+        &.open .right {
+          top: pxToRem(22px);
+          transform: rotate(180deg);
+        }
+      }
     }
 
     .goods-address {
       margin-left: pxToRem(168px);
+
       button {
         width: pxToRem(120px);
         height: pxToRem(50px);

@@ -193,6 +193,21 @@ main {
     background-image: url("../images/dian@3x.png");
   }
 }
+.goods-detail .handle-icon li.download i {
+  background-image: url("../images/down.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+@media (-webkit-min-device-pixel-ratio: 2), (min-device-pixel-ratio: 2) {
+  .goods-detail .handle-icon li.download i {
+    background-image: url("../images/down@2x.png");
+  }
+}
+@media (-webkit-min-device-pixel-ratio: 3), (min-device-pixel-ratio: 3) {
+  .goods-detail .handle-icon li.download i {
+    background-image: url("../images/down@3x.png");
+  }
+}
 .goods-detail .price-bar {
   font-weight: bold;
   color: #D03E27;

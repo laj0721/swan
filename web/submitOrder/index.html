@@ -44,7 +44,7 @@
       </div>
       <div>
         <label>手机号码</label>
-        <input type="tel" placeholder="请输入收件手机号码">
+        <input type="tel" id="phone" placeholder="请输入收件手机号码">
         <div class="verify-area">
           <input class="verify-code" type="number" placeholder="填写验证码">
           <button class="code-btn">发送验证码</button>
@@ -54,9 +54,21 @@
         <label class="float-l">收货地址</label>
         <div class="goods-address">
           <div>
-            <button>省份</button>
-            <button>城市</button>
-            <button>区域</button>
+            <div class="outlineBorder">
+              <div class="left selectVal">省份</div>
+              <ul class="selectDiv province none">
+              </ul>
+            </div>
+            <div class="outlineBorder">
+              <div class="left selectVal">城市</div>
+              <ul class="selectDiv city none">
+              </ul>
+            </div>
+            <div class="outlineBorder">
+              <div class="left selectVal">区域</div>
+              <ul class="selectDiv region none">
+              </ul>
+            </div>
           </div>
           <input type="text" placeholder="详细地址">
         </div>
