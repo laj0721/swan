@@ -398,6 +398,8 @@ footer {
       margin: 0 pxToRem(30px);
       color: #141414;
       overflow-y: auto;
+      display: none;
+
       dt {
         font-size: pxToRem(32px);
         text-align: center;
@@ -428,6 +430,7 @@ footer {
       overflow-y: auto;
       padding: pxToRem(25px) pxToRem(20px);
       background-color: #fff;
+      display: none;
 
       .store-detail {
         margin-bottom: pxToRem(60px);
@@ -522,6 +525,14 @@ footer {
       font-size: pxToRem(28px);
       background-color: #D03E27;
     }
+  }
+
+  &.goodsParam .content dl {
+    display: block;
+  }
+
+  &.chooseSizes .content .goods-info {
+    display: block;
   }
 }
 

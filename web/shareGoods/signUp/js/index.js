@@ -3,6 +3,7 @@ $(function() {
 
   var search = parse(),
     $sendBtn = $('.send-btn');
+
   //返回
   $('header i').on('click', function() {
     history.go(-1);
@@ -71,6 +72,8 @@ $(function() {
     }
 
     var param = {
+      name: phone,
+      password: phone,
       phone: phone,
       verification_code: verCode
     };
@@ -89,12 +92,8 @@ $(function() {
         }
       },
       error: function(e) {
-        //throw new Error(e);
-        if (search.isBtn === 'true') { // 点击“加入鸿链”按钮，跳转到下载APP页
-          location.href = '../signUpSucc/index.html';
-        } else { // 点击商品列表，跳转到商品详情页
-          location.href = '../../home/index.html?type=share&id=' + search.id;
-        }
+        console.log(e);
+        throw new Error(e);
       }
     });
   });

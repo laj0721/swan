@@ -119,7 +119,6 @@ main input {
   border-left: 1px solid #D03E27;
 }
 main input[placeholder], main [placeholder], main *[placeholder] {
-  color: #B1B1B1 !important;
   font-size: 0.37333rem;
 }
 main .telephone i {

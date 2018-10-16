@@ -1,26 +1,77 @@
 $(function() {
   "use strict";
 
+  var ua = window.navigator.userAgent.toLowerCase();
+  // if (ua.match(/MicroMessenger/i) !== 'micromessenger' && ua.match(/_SQ_/i) !== '_sq_'){ // 判断是否微信页面
+  //   alert('请使用微信浏览器打开');
+  //   return;
+  // }
+
   FastClick.attach(document.body);
 
   var $chooseDialog = $('.choose-dialog'),
     $chooseDigContent = $chooseDialog.find('.content'),
     search = parse();
 
+  getGoodsById();
   if (search) {
-    if (search.type === 'share') {
-      $('.dian-zan,.dianzan').remove();
-    }
-     
-    if (search.id) {
-      getGoodsById();
+    if (search.code) { // 登陆授权进来，直接加载数据
+      if (search.type === 'share') {
+        $('.dian-zan,.dianzan').remove();
+      }
+       
+      if (search.id) {
+        getGoodsById();
+        getThirdPartAuth();
+        bindWeixinShare();
+      }
+    } else { // 点击分享链接进来需要微信授权登陆
+      //getWeixinAuthLogin(); // 调起微信授权登陆接口
     }
   }
   
-  var ua = window.navigator.userAgent.toLowerCase();
-  if(ua.match(/MicroMessenger/i) == 'micromessenger' || ua.match(/_SQ_/i) == '_sq_'){ // 判断是否微信页面
-    // 调用后端接口，获取【appId，timestamp，nonceStr，signature】
+  // 微信授权登陆
+  function getWeixinAuthLogin() {
+    var param = {
+      appid: 'wx2d0b305de29738e7',
+      redirect_uri: URLEncoder.encode(location.href,"UTF-8"),
+      response_type: 'code',
+      scope: 'snsapi_userinfo',
+      state: 'STATE#wechat_redirect'
+    };
 
+    $.ajax({
+      type: 'GET',
+      url: 'https://open.weixin.qq.com/connect/oauth2/authorize',
+      data: param,
+      dataType: 'json',
+      timeout: 3000,
+      success: function(data){
+        console.log(data); 
+      },
+      complete: function(){}
+    });
+  }
+
+  function getThirdPartAuth(code) {
+    $.ajax({
+      type: 'GET',
+      url: '/api/socials/weixin/authorizations',
+      data: {code: code},
+      headers: {Accept: 'application/prs.shop.v1+json'},
+      dataType: 'json',
+      timeout: 3000,
+      success: function(data){
+        console.log(data); 
+      },
+      complete: function(){}
+    });
+  }
+
+  function bindWeixinShare() {
+    // 调用后端接口，获取【appId，timestamp，nonceStr，signature】
+  
+    // 微信分享
     $('.goods-detail .share').on('click', function() {
       // 分享给朋友
       wx.updateAppMessageShareData({ 
@@ -42,7 +93,8 @@ $(function() {
       }); 
     });
   }
-
+  
+  // 获取商品详情
   function getGoodsById() {
     var param = {
       include: 'skus,properties'
@@ -106,9 +158,10 @@ $(function() {
     }
   });
 
-  // 查看商品参数
+  // 查看商品参数/选择尺寸，颜色分类
   $('.goods-param,.choose-sizes').on('click', function() {
-    $chooseDialog.removeClass('none');
+    $chooseDialog.removeClass('none goodsParam chooseSizes');
+    $(this).hasClass('goods-param') ? $chooseDialog.addClass('goodsParam') : $chooseDialog.addClass('chooseSizes');
   });
 
   $chooseDialog.find('button,.close').on('click', function() {
@@ -118,7 +171,7 @@ $(function() {
       $chooseDialog.addClass('none');
     }, 250);
   });
-  
+
   // 查看全部评论
   $('.more-btn button,.user-evaluate li').on('click', function() {
     location.href = "../evaluate/index.html?id=" + search.id;
@@ -127,5 +180,10 @@ $(function() {
   // 购买
   $('footer button').on('click', function() {
     location.href = "../submitOrder/index.html";
+  });
+
+  //返回
+  $('header i').on('click', function() {
+    history.go(-1);
   });
 });

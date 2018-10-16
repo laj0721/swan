@@ -54,7 +54,7 @@ $(function() {
     isloading = true;
     $.ajax({
       type: 'GET',
-      url: '/api/products',
+      url: '/api/products?sort=-sold_count',
       data: param,
       dataType: 'json',
       timeout: 3000,
