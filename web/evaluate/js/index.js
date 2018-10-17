@@ -15,27 +15,26 @@ $(function() {
 
   function handleData(result) {
     if (result && $.isArray(result.data) && result.data.length > 0) {
-      var html = [],
-        data = result.data,
-        len = data.length;
+      var lis = [],
+        data = result.data;
 
-        for(var i = 0; i < len; i++) {
-          var li = ['<li>',
-            '<div class="head">',
-              '<img src="./images/head-portrait.jpg" />',
-              '<span>危言危行13***8</span>',
-            '</div>',
-            '<div class="evaluate">裤子穿着挺舒服的，喜欢这种收腰设计的背带裤，就是个人觉得颜色有点太浅，要是稍微深点更完美！</div>',
-            '<p class="detail">',
-              '<span>2018-10-02</span>',
-              '<span>颜色分类 : <em>蓝色</em></span>',
-              '<span>尺寸 : <em>L</em></span>',
-            '</p>',
-          '</li>'];
-          html.push(li.join(''));
+        for (var i = 0,len = data.length; i < len; i++) {
+          var item = data[i],
+            html = ['<li>',
+              '<div class="head">',
+                '<img src=' + (item.product_sku ? item.product_sku.image_url: null) + ' />',
+                '<span>' + (item.username ?  item.username : "匿名评价") + '</span>',
+              '</div>',
+              '<div class="evaluate">' + item.review + '</div>',
+              '<p class="detail">',
+                '<span>' + item.reviewed_at + '</span>',
+                '<span> ' + item.product_sku? item.product_sku.title : '' + '</span>',
+              '</p>',
+            '</li>'];
+          lis.push(html.join(''));
         }
     
-        $ul.append(html.join(''));
+        $ul.append(lis.join(''));
     }
 
     if (result && $.isPlainObject(result.meta) && $.isPlainObject(result.meta.pagination)) {

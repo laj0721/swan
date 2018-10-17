@@ -123,6 +123,9 @@ ul li .head img {
   height: 0.8rem;
   margin-right: 0.13333rem;
   vertical-align: middle;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
 }
 ul li .evaluate {
   font-size: 0.37333rem;

@@ -11,23 +11,26 @@ $(function() {
 
   var $chooseDialog = $('.choose-dialog'),
     $chooseDigContent = $chooseDialog.find('.content'),
-    search = parse();
+    $chooseDigInfo = $chooseDigContent.find('.goods-info'),
+    search = parse(),
+    goodsSkus = [],
+    selectedGoods = {};
 
-  getGoodsById();
   if (search) {
-    if (search.code) { // 登陆授权进来，直接加载数据
+    // if (search.code) { // 登陆授权进来，直接加载数据
       if (search.type === 'share') {
         $('.dian-zan,.dianzan').remove();
       }
        
       if (search.id) {
-        getGoodsById();
-        getThirdPartAuth();
-        bindWeixinShare();
+        getGoodsById(); // 获取商品详情信息
+        getGoodsComments(search.id); // 获取商品评论
+        //getThirdPartAuth();
+        //bindWeixinShare(); //绑定微信分享
       }
-    } else { // 点击分享链接进来需要微信授权登陆
+    // } else { // 点击分享链接进来需要微信授权登陆
       //getWeixinAuthLogin(); // 调起微信授权登陆接口
-    }
+    // }
   }
   
   // 微信授权登陆
@@ -97,7 +100,7 @@ $(function() {
   // 获取商品详情
   function getGoodsById() {
     var param = {
-      include: 'skus,properties'
+      include: 'skus,properties,shop'
     };
 
     $.ajax({
@@ -109,54 +112,117 @@ $(function() {
       success: function(data){
         handleData(data);
       },
-      complete: function(){
-        //event();
+      complete: function(){}
+    });
+  }
+
+  function getGoodsComments(id) {
+    var param = {
+      page: 1,
+      per_page: 2
+    };
+
+    $.ajax({
+      type: 'GET',
+      url: '/api/products/' + id + '/reviews',
+      data: param,
+      dataType: 'json',
+      timeout: 3000,
+      success: function(res){
+        var $userEvaluate = $('.user-evaluate');
+
+        if (res && res.data && res.data.length) {
+          var lis = [];
+          for (var i = 0,len = res.data.length; i < len; i++) {
+            var item = res.data[i],
+              html = ['<li>',
+                '<div class="head">',
+                  '<img src=' + (item.product_sku ? item.product_sku.image_url: null) + ' />',
+                  '<span>' + (item.username ?  item.username : "匿名评价") + '</span>',
+                '</div>',
+                '<div class="evaluate">' + item.review + '</div>',
+                '<p class="detail">',
+                  '<span>' + item.reviewed_at + '</span>',
+                  '<span> ' + item.product_sku? item.product_sku.title : '' + '</span>',
+                '</p>',
+              '</li>'];
+            lis.push(html.join(''));
+          }
+          $userEvaluate.find('ul').html(lis.join(''));
+          $userEvaluate.find('.no-data').hide();
+          $userEvaluate.find('.more-btn').show();
+        } else {
+          $userEvaluate.find('.no-data').show();
+          $userEvaluate.find('.more-btn').hide();
+        }
       }
     });
   }
 
   function handleData(result) {
-    console.log(result);
-    // if (result && $.isArray(result.data) && result.data.length > 0) {
-    //   var html = [],
-    //     data = result.data,
-    //     len = data.length;
-
-    //   for(var i = 0; i < len; i++) {
-    //     var item = data[i];
-    //     var li = ['<li data-id="' + item.id + '">',
-    //       '<img src=' + item.image_url + ' />',
-    //       '<div class="content">',
-    //         '<h4>' + item.long_title + '</h4>',
-    //         '<p>淘宝价 <span>￥2399.00</span></p>',
-    //         '<p>会员价 <span>￥2399.00</span></p>',
-    //         '<div class="clear">',
-    //           '<em class="float-l">' + item.price + '</em>',
-    //           '<span class="float-r">销量' + item.sold_count + '</span>',
-    //         '</div>',
-    //       '</div>',
-    //     '</li>'];
-    //     html.push(li.join(''));
-    //   }
-
-    //   $ul.append(html.join(''));
-    // }
-
-    // if (result && $.isPlainObject(result.meta) && $.isPlainObject(result.meta.pagination)) {
-    //   total = result.meta.pagination.total;
-    // }
-
-    // isloading = false;
+    if (result && $.isPlainObject(result.data)) {
+      var data = result.data;
+      // banner轮播图/选择尺寸、颜色
+      if (data.skus && data.skus.data && data.skus.data.length) {
+        var bannerHtml = [],
+          classify = [],
+          skusData = data.skus.data;
+        for (var i = 0,len = skusData.length; i < len; i++) {
+          var item = skusData[i];
+          bannerHtml.push('<div class="swiper-slide"><img src='+ item.image_url +'></div>');
+          classify.push('<li>' + item.title + '</li>');
+        }
+        // banner轮播图
+        $('.swiper-wrapper').html(bannerHtml.join(''));
+        $chooseDialog.find('.property .classify').html(classify.join(''));
+        goodsSkus = skusData;
+        chooseClassify(0);
+        bindClassifyEvent();
+        new Swiper ('.swiper-container', {
+          autoplay: true,
+          pagination: { //分页器
+            el: '.swiper-pagination',
+            type: 'fraction'
+          }
+        });
+      }
+      // 商品属性
+      if (data.properties && $.isPlainObject(data.properties) && data.properties.data) {
+        var dds = ['<dt>产品参数</dt>'];
+        for (var i = 0,len = data.properties.data.length; i < len; i++) {
+          var item = data.properties.data[i];
+          dds.push('<dd><label>' + item.name + '</label><span>' + item.value + '</span></dd>');
+        }
+        $('.choose-dialog dl').html(dds.join(''));
+      }
+      // 商品详情
+      $('.goods-detail .title').text(data.long_title);
+      $('.goods-detail .vip-price span').text('¥' + data.discount_price);
+      $('.goods-detail .original-price span,.goods-detail .price-bar').text('¥' + data.price);
+      // 商品介绍
+      $('.goods-infor .des').html(data.description);
+      // 按钮原价、会员价
+      $('footer .origi-btn span').text('¥' + data.price);
+      $('footer .vip-btn span').text('¥' + data.discount_price);
+    }
   }
 
-  // banner轮播图
-  var mySwiper = new Swiper ('.swiper-container', {
-    autoplay: true,
-    pagination: { //分页器
-      el: '.swiper-pagination',
-      type: 'fraction'
-    }
-  });
+  function chooseClassify(i) {
+    var $lis = $chooseDigInfo.find('.classify li');
+    selectedGoods = goodsSkus[i];
+    $lis.removeClass('selected');
+    $lis.eq(i).addClass('selected');
+    $chooseDigInfo.find('img').attr('src', selectedGoods.image_url);
+    $chooseDigInfo.find('.stock span').text(selectedGoods.stock);
+    $chooseDigInfo.find('.order-infor h4').html('¥' + selectedGoods.price);
+  }
+
+  function bindClassifyEvent() {
+    $chooseDigInfo.find('.classify li').on('click', function() {
+      var ind = $(this).index();
+      chooseClassify(ind);
+    });
+  }
 
   // 查看商品参数/选择尺寸，颜色分类
   $('.goods-param,.choose-sizes').on('click', function() {
@@ -170,6 +236,17 @@ $(function() {
       $chooseDigContent.removeClass('fadeout');
       $chooseDialog.addClass('none');
     }, 250);
+  });
+
+  $chooseDialog.find('.group-btn input[type="button"]').on('click', function() {
+    var $goodsNum = $('.goodsNum'),
+      val = parseInt($goodsNum.val()),
+      num = val + 1;
+    if ($(this).hasClass('minus')) { // 减
+      val > 1? num = val - 1: num = val;
+    } 
+
+    $goodsNum.val(num);
   });
 
   // 查看全部评论

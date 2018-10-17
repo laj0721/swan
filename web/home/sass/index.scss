@@ -29,7 +29,7 @@ header {
 main {
   position: absolute;
   left: 0;
-  top: 0;
+  top: pxToRem(88px);
   width: 100%;
   max-height: pxToRem(1246px);
   overflow-x: hidden;
@@ -40,11 +40,11 @@ main {
 
 .swiper-container {
   position: relative;
-  height: pxToRem(750px);
+  //height: pxToRem(750px);
 
   img {
     width: pxToRem(750px);
-    height: pxToRem(750px);
+    height: auto;
   }
 
   .swiper-pagination-fraction {
@@ -77,7 +77,7 @@ main {
     text-align: justify;
     letter-spacing: pxToRem(-1px);
   }
-  .jd-price, .original-price {
+  .vip-price, .original-price {
     color: #999;
     font-size: pxToRem(24px);
     height: pxToRem(40px);
@@ -256,6 +256,12 @@ main {
     line-height: pxToRem(140px);
     background-color: #fff;
   }
+
+  .no-data {
+    text-align: center;
+    font-size: pxToRem(28px);
+    padding-bottom: pxToRem(50px);
+  }
   
   ul li {
     margin: 0 pxToRem(20px);
@@ -277,6 +283,7 @@ main {
         height: pxToRem(60px);
         margin-right: pxToRem(10px);
         vertical-align: middle;
+        @include border-radius(50%);
       }
     }
 
@@ -315,6 +322,7 @@ main {
     text-align: center;
     margin: pxToRem(40px) 0;
     background-color: #fff;
+    display: none;
 
     button {
       width: pxToRem(280px);
@@ -407,19 +415,19 @@ footer {
         line-height: pxToRem(130px);
       }
       dd {
-        font-size: pxToRem(28px);
+        font-size: pxToRem(26px);
         line-height: pxToRem(44px);
         border-bottom: pxToRem(1px) solid #DFDFDF;
         padding: pxToRem(30px) 0;
 
         label {
-          width: 27%;
+          width: 32%;
           display: inline-block;
           vertical-align: top;
         }
 
         span {
-          width: 70%;
+          width: 67%;
           display: inline-block;
         }
       }
@@ -484,6 +492,11 @@ footer {
         padding: pxToRem(18px) pxToRem(30px);
         margin: 0 pxToRem(15px) pxToRem(15px) 0;
         @include border-radius(pxToRem(8px));
+
+        &.selected {
+          background-color: #FFF2F0;
+          color: #D03E27;
+        }
       }
 
       .group-btn {

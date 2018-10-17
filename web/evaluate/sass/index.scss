@@ -62,6 +62,7 @@ ul li {
       height: pxToRem(60px);
       margin-right: pxToRem(10px);
       vertical-align: middle;
+      @include border-radius(50%);
     }
   }
 

@@ -91,7 +91,7 @@ header i {
 main {
   position: absolute;
   left: 0;
-  top: 0;
+  top: 1.17333rem;
   width: 100%;
   max-height: 16.61333rem;
   overflow-x: hidden;
@@ -102,11 +102,10 @@ main {
 
 .swiper-container {
   position: relative;
-  height: 10rem;
 }
 .swiper-container img {
   width: 10rem;
-  height: 10rem;
+  height: auto;
 }
 .swiper-container .swiper-pagination-fraction {
   position: absolute;
@@ -139,7 +138,7 @@ main {
   text-align: justify;
   letter-spacing: -0.01333rem;
 }
-.goods-detail .jd-price, .goods-detail .original-price {
+.goods-detail .vip-price, .goods-detail .original-price {
   color: #999;
   font-size: 0.32rem;
   height: 0.53333rem;
@@ -353,6 +352,11 @@ main {
   line-height: 1.86667rem;
   background-color: #fff;
 }
+.user-evaluate .no-data {
+  text-align: center;
+  font-size: 0.37333rem;
+  padding-bottom: 0.66667rem;
+}
 .user-evaluate ul li {
   margin: 0 0.26667rem;
   border-bottom: 0.01333rem solid #B1B1B1;
@@ -372,6 +376,9 @@ main {
   height: 0.8rem;
   margin-right: 0.13333rem;
   vertical-align: middle;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
 }
 .user-evaluate ul li .evaluate {
   font-size: 0.37333rem;
@@ -402,6 +409,7 @@ main {
   text-align: center;
   margin: 0.53333rem 0;
   background-color: #fff;
+  display: none;
 }
 .user-evaluate .more-btn button {
   width: 3.73333rem;
@@ -505,18 +513,18 @@ footer li .vip-btn {
   line-height: 1.73333rem;
 }
 .choose-dialog .content dl dd {
-  font-size: 0.37333rem;
+  font-size: 0.34667rem;
   line-height: 0.58667rem;
   border-bottom: 0.01333rem solid #DFDFDF;
   padding: 0.4rem 0;
 }
 .choose-dialog .content dl dd label {
-  width: 27%;
+  width: 32%;
   display: inline-block;
   vertical-align: top;
 }
 .choose-dialog .content dl dd span {
-  width: 70%;
+  width: 67%;
   display: inline-block;
 }
 .choose-dialog .content .goods-info {
@@ -575,6 +583,10 @@ footer li .vip-btn {
   -moz-border-radius: 0.10667rem;
   -webkit-border-radius: 0.10667rem;
   border-radius: 0.10667rem;
+}
+.choose-dialog .content .goods-info ul li.selected {
+  background-color: #FFF2F0;
+  color: #D03E27;
 }
 .choose-dialog .content .goods-info .group-btn {
   float: right;

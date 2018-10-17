@@ -17,18 +17,14 @@
   </header>
   <main>
     <div class="swiper-container">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="./images/pic.jpg"></div>
-        <div class="swiper-slide"><img src="./images/pic.jpg"></div>
-        <div class="swiper-slide"><img src="./images/pic.jpg"></div>
-      </div>
+      <div class="swiper-wrapper"></div>
       <!-- 如果需要分页器 -->
       <div class="swiper-pagination"></div>
     </div>
     <section class="goods-detail">
       <div class="title">2018秋装新款韩版潮宽松牛仔小清新学院风背带裤女原宿风裤子百搭</div>
-      <p class="jd-price">京东价 <span>¥329.00</span></p>
-      <p class="original-price">原价 <span>¥329.00</span></p>
+      <p class="vip-price">会员价 <span>¥329.00</span></p>
+      <!-- <p class="original-price">原价 <span>¥329.00</span></p> -->
       <ul class="handle-icon">
         <li class="download">
           <i></i><p>下载APP</p>
@@ -68,28 +64,24 @@
     </div>
     <section class="goods-infor">
       <div class="title"><h4>商品介绍</h4></div>
-      <ul>
+      <div class="des">
         <li><img src="./images/pic.jpg" /></li>
         <li><img src="./images/pic.jpg" /></li>
         <li><img src="./images/pic.jpg" /></li>
         <li><img src="./images/pic.jpg" /></li>
         <li><img src="./images/pic.jpg" /></li>
-      </ul>
+      </div>
     </section>
     <section class="user-evaluate">
       <div class="title"><h4>用户评价</h4></div>
+      <p class="no-data">暂无用户评价</p>
       <ul>
-        <li>
+        <!-- <li>
           <div class="head">
             <img src="./images/head-portrait.jpg" />
             <span>危言危行13***8</span>
           </div>
           <div class="evaluate">裤子穿着挺舒服的，喜欢这种收腰设计的背带裤，就是个人觉得颜色有点太浅，要是稍微深点更完美！</div>
-          <!-- <dl>
-            <dd><img src="./images/pic.jpg" data-preview-src="" data-preview-group="2"></dd>
-            <dd><img src="./images/pic.jpg" data-preview-src="" data-preview-group="2"></dd>
-            <dd><img src="./images/pic.jpg" data-preview-src="" data-preview-group="2"></dd>
-          </dl> -->
           <p class="detail">
             <span>2018-10-02</span>
             <span>颜色分类 : <em>蓝色</em></span>
@@ -112,7 +104,7 @@
             <span>颜色分类 : <em>蓝色</em></span>
             <span>尺寸 : <em>L</em></span>
           </p>
-        </li>
+        </li> -->
       </ul>
       <div class="more-btn">
         <button>查看全部评论</button>
@@ -132,19 +124,7 @@
   <div class="choose-dialog none">
     <section class="content">
       <div class="close"></div>
-      <dl>
-        <dt>产品参数</dt>
-        <dd><label>品牌</label><span>other/其他</span></dd>
-        <dd><label>尺寸</label><span>XS、S、M、L、XL、2XL</span></dd>
-        <dd><label>面料分类</label><span>全棉牛仔布</span></dd>
-        <dd><label>腰型</label><span>高腰</span></dd>
-        <dd>
-          <label>颜色分类</label>
-          <span>浅蓝色【八分】，浅蓝色【九分】，深蓝色【八分】，深蓝色【九分】</span>
-        </dd>
-        <dd><label>尺寸</label><span>XS、S、M、L、XL、2XL</span></dd>
-        <dd><label>货号</label><span>B42963892</span></dd>
-      </dl>
+      <dl></dl>
       <div class="goods-info">
         <div class="store-detail clear">
           <img src="./images/pic.jpg">
@@ -154,7 +134,7 @@
             <p>请选择 、分类、 规格</p>
           </div>
         </div>
-        <div class="param-list">
+        <div class="param-list property">
           <label></label>
           <ul class="classify">
             <li>黄色</li>
@@ -164,23 +144,12 @@
             <li>黄色</li>
           </ul>
         </div>
-        <div class="param-list">
-          <label>尺寸</label>
-          <ul class="classify">
-            <li>XS</li>
-            <li>S</li>
-            <li>M</li>
-            <li>L</li>
-            <li>XL</li>
-            <li>XXL</li>
-          </ul>
-        </div>
         <div class="param-list clear">
           <label class="float-l mg-top-20">购买数量</label>
           <div class="group-btn float-r">
-            <input type="button" value="-" >
-            <input type="number" value="1" />
-            <input type="button" value="+">
+            <input type="button" value="-" class="minus">
+            <input type="number" value="1" class="goodsNum" />
+            <input type="button" value="+" class="add">
           </div>
         </div>
       </div>
